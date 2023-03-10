@@ -1,7 +1,7 @@
 import {
   AccountData, AminoSignResponse, OfflineAminoSigner, Pubkey, StdSignature, StdSignDoc,
 } from '@cosmjs/amino'
-// import Transport from '@ledgerhq/hw-transport'
+import Transport from '@ledgerhq/hw-transport'
 
 import Eth from '@ledgerhq/hw-app-eth'
 import { LoadConfig } from '@ledgerhq/hw-app-eth/lib/services/types'
@@ -43,7 +43,7 @@ export default class EthereumLedgerSigner implements OfflineAminoSigner {
   prefix = 'evmos'
 
   static async create(protocol: string, hdpath: HdPath, loadConfig?: LoadConfig, scrambleKey = 'w0w'): Promise<EthereumLedgerSigner> {
-    const transport: Promise<any> = protocol === 'ledgerBle' ? TransportWebBLE.create() : TransportWebUSB.create()
+    const transport: Promise<Transport> = protocol === 'ledgerBle' ? TransportWebBLE.create() : TransportWebUSB.create()
     return transport.then(t => {
       const instance = new EthereumLedgerSigner()
       instance.hdpath = pathToString(hdpath).replace('m/', '').replace('/60/', "/60'/")
