@@ -402,7 +402,7 @@ export default {
       if (res) {
         this.coinInfo = res
         this.tickers = res.tickers
-        if (this.tickers.length > 0) {
+        if (this.tickers?.length > 0) {
           // eslint-disable-next-line prefer-destructuring
           this.selectedTicker = this.tickers[0]
         }

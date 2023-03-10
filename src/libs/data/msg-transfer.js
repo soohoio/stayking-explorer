@@ -20,7 +20,7 @@ exports.MsgTransfer = {
     if (message.sourceChannel !== '') {
       writer.uint32(18).string(message.sourceChannel)
     }
-    if (message.token !== undefined) {
+    if (typeof message.token !== 'undefined') {
       coin1.Coin.encode(message.token, writer.uint32(26).fork()).ldelim()
     }
     if (message.sender !== '') {
@@ -29,7 +29,7 @@ exports.MsgTransfer = {
     if (message.receiver !== '') {
       writer.uint32(42).string(message.receiver)
     }
-    if (message.timeoutHeight !== undefined) {
+    if (typeof message.timeoutHeight !== 'undefined') {
       client1.Height.encode(message.timeoutHeight, writer.uint32(50).fork()).ldelim()
     }
     if (!message.timeoutTimestamp.isZero()) {
@@ -76,17 +76,17 @@ exports.MsgTransfer = {
   },
   fromJSON(object) {
     const message = { ...baseMsgTransfer }
-    if (object.sourcePort !== undefined && object.sourcePort !== null) {
+    if (typeof object.sourcePort !== 'undefined' && object.sourcePort !== null) {
       message.sourcePort = String(object.sourcePort)
     } else {
       message.sourcePort = ''
     }
-    if (object.sourceChannel !== undefined && object.sourceChannel !== null) {
+    if (typeof object.sourceChannel !== 'undefined' && object.sourceChannel !== null) {
       message.sourceChannel = String(object.sourceChannel)
     } else {
       message.sourceChannel = ''
     }
-    if (object.token !== undefined && object.token !== null) {
+    if (typeof object.token !== 'undefined' && object.token !== null) {
       message.token = coin1.Coin.fromJSON(object.token)
     } else {
       message.token = undefined
@@ -117,46 +117,46 @@ exports.MsgTransfer = {
     const obj = {}
     if (message.sourcePort !== undefined) obj.sourcePort = message.sourcePort
     if (message.sourceChannel !== undefined) obj.sourceChannel = message.sourceChannel
-    if (message.token !== undefined) obj.token = message.token ? coin1.Coin.toJSON(message.token) : undefined
-    if (message.sender !== undefined) obj.sender = message.sender
-    if (message.receiver !== undefined) obj.receiver = message.receiver
-    if (message.timeoutHeight !== undefined) obj.timeoutHeight = message.timeoutHeight ? client1.Height.toJSON(message.timeoutHeight) : undefined
-    if (message.timeoutTimestamp !== undefined) obj.timeoutTimestamp = (message.timeoutTimestamp || '0').toString()
+    if (typeof message.token !== undefined) obj.token = message.token ? coin1.Coin.toJSON(message.token) : undefined
+    if (typeof message.sender !== 'undefined') obj.sender = message.sender
+    if (typeof message.receiver !== 'undefined') obj.receiver = message.receiver
+    if (typeof message.timeoutHeight !== 'undefined') obj.timeoutHeight = message.timeoutHeight ? client1.Height.toJSON(message.timeoutHeight) : undefined
+    if (typeof message.timeoutTimestamp !== 'undefined') obj.timeoutTimestamp = (message.timeoutTimestamp || '0').toString()
     return obj
   },
   fromPartial(object) {
     const message = { ...baseMsgTransfer }
-    if (object.sourcePort !== undefined && object.sourcePort !== null) {
+    if (typeof object.sourcePort !== 'undefined' && object.sourcePort !== null) {
       message.sourcePort = object.sourcePort
     } else {
       message.sourcePort = ''
     }
-    if (object.sourceChannel !== undefined && object.sourceChannel !== null) {
+    if (typeof object.sourceChannel !== 'undefined' && object.sourceChannel !== null) {
       message.sourceChannel = object.sourceChannel
     } else {
       message.sourceChannel = ''
     }
-    if (object.token !== undefined && object.token !== null) {
+    if (typeof object.token !== 'undefined' && object.token !== null) {
       message.token = coin1.Coin.fromPartial(object.token)
     } else {
       message.token = undefined
     }
-    if (object.sender !== undefined && object.sender !== null) {
+    if (typeof object.sender !== 'undefined' && object.sender !== null) {
       message.sender = object.sender
     } else {
       message.sender = ''
     }
-    if (object.receiver !== undefined && object.receiver !== null) {
+    if (typeof object.receiver !== 'undefined' && object.receiver !== null) {
       message.receiver = object.receiver
     } else {
       message.receiver = ''
     }
-    if (object.timeoutHeight !== undefined && object.timeoutHeight !== null) {
+    if (typeof object.timeoutHeight !== 'undefined' && object.timeoutHeight !== null) {
       message.timeoutHeight = client1.Height.fromPartial(object.timeoutHeight)
     } else {
       message.timeoutHeight = undefined
     }
-    if (object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null) {
+    if (typeof object.timeoutTimestamp !== 'undefined' && object.timeoutTimestamp !== null) {
       message.timeoutTimestamp = object.timeoutTimestamp
     } else {
       message.timeoutTimestamp = long1.default.UZERO

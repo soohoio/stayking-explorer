@@ -21,7 +21,7 @@ export default {
       state.windowWidth = val
     },
     TOGGLE_OVERLAY(state, val) {
-      state.shallShowOverlay = val !== undefined ? val : !state.shallShowOverlay
+      state.shallShowOverlay = typeof val !== 'undefined' ? val : !state.shallShowOverlay
     },
   },
   actions: {},

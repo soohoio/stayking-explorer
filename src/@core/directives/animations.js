@@ -21,7 +21,7 @@ export const heightFade = {
     }
   },
   unbind(el) {
-    if (el.style === undefined) return
+    if (typeof el.style === 'undefined') return
     el.style.overflow = 'hidden'
     el.style.maxHeight = '0px'
     el.style.opacity = 0

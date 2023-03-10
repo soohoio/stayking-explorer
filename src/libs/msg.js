@@ -35,13 +35,13 @@ export const SwapAmountInRoute = {
     },
     fromJSON(object) {
         const message = Object.assign({}, baseSwapAmountInRoute);
-        if (object.poolId !== undefined && object.poolId !== null) {
+        if (typeof object.poolId !== 'undefined' && object.poolId !== null) {
             message.poolId = Long.fromString(object.poolId);
         }
         else {
             message.poolId = Long.UZERO;
         }
-        if (object.tokenOutDenom !== undefined && object.tokenOutDenom !== null) {
+        if (typeof object.tokenOutDenom !== 'undefined' && object.tokenOutDenom !== null) {
             message.tokenOutDenom = String(object.tokenOutDenom);
         }
         else {
@@ -51,9 +51,9 @@ export const SwapAmountInRoute = {
     },
     toJSON(message) {
         const obj = {};
-        message.poolId !== undefined &&
+        typeof message.poolId !== 'undefined' &&
             (obj.poolId = (message.poolId || Long.UZERO).toString());
-        message.tokenOutDenom !== undefined &&
+        typeof message.tokenOutDenom !== 'undefined' &&
             (obj.tokenOutDenom = message.tokenOutDenom);
         return obj;
     },
@@ -191,24 +191,24 @@ export const MsgSwapExactAmountIn = {
     fromJSON(object) {
         const message = Object.assign({}, baseMsgSwapExactAmountIn);
         message.routes = [];
-        if (object.sender !== undefined && object.sender !== null) {
+        if (typeof object.sender !== 'undefined' && object.sender !== null) {
             message.sender = String(object.sender);
         }
         else {
             message.sender = "";
         }
-        if (object.routes !== undefined && object.routes !== null) {
+        if (typeof object.routes !== 'undefined' && object.routes !== null) {
             for (const e of object.routes) {
                 message.routes.push(SwapAmountInRoute.fromJSON(e));
             }
         }
-        if (object.tokenIn !== undefined && object.tokenIn !== null) {
+        if (typeof object.tokenIn !== 'undefined' && object.tokenIn !== null) {
             message.tokenIn = Coin.fromJSON(object.tokenIn);
         }
         else {
             message.tokenIn = undefined;
         }
-        if (object.tokenOutMinAmount !== undefined &&
+        if (typeof object.tokenOutMinAmount !== 'undefined' &&
             object.tokenOutMinAmount !== null) {
             message.tokenOutMinAmount = String(object.tokenOutMinAmount);
         }
@@ -219,42 +219,42 @@ export const MsgSwapExactAmountIn = {
     },
     toJSON(message) {
         const obj = {};
-        message.sender !== undefined && (obj.sender = message.sender);
+        typeof message.sender !== 'undefined' && (obj.sender = message.sender);
         if (message.routes) {
             obj.routes = message.routes.map((e) => e ? SwapAmountInRoute.toJSON(e) : undefined);
         }
         else {
             obj.routes = [];
         }
-        message.tokenIn !== undefined &&
+        typeof message.tokenIn !== 'undefined' &&
             (obj.tokenIn = message.tokenIn
                 ? Coin.toJSON(message.tokenIn)
                 : undefined);
-        message.tokenOutMinAmount !== undefined &&
+        typeof message.tokenOutMinAmount !== 'undefined' &&
             (obj.tokenOutMinAmount = message.tokenOutMinAmount);
         return obj;
     },
     fromPartial(object) {
         const message = Object.assign({}, baseMsgSwapExactAmountIn);
         message.routes = [];
-        if (object.sender !== undefined && object.sender !== null) {
+        if (typeof object.sender !== 'undefined' && object.sender !== null) {
             message.sender = object.sender;
         }
         else {
             message.sender = "";
         }
-        if (object.routes !== undefined && object.routes !== null) {
+        if (typeof object.routes !== 'undefined' && object.routes !== null) {
             for (const e of object.routes) {
                 message.routes.push(SwapAmountInRoute.fromPartial(e));
             }
         }
-        if (object.tokenIn !== undefined && object.tokenIn !== null) {
+        if (typeof object.tokenIn !== 'undefined' && object.tokenIn !== null) {
             message.tokenIn = Coin.fromPartial(object.tokenIn);
         }
         else {
             message.tokenIn = undefined;
         }
-        if (object.tokenOutMinAmount !== undefined &&
+        if (typeof object.tokenOutMinAmount !== 'undefined' &&
             object.tokenOutMinAmount !== null) {
             message.tokenOutMinAmount = object.tokenOutMinAmount;
         }

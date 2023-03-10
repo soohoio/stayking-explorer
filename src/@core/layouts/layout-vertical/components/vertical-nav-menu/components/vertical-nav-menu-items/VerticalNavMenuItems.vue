@@ -42,7 +42,7 @@ export default {
       const { excludes } = selected
       const children = []
       modules().forEach(m => {
-        if (excludes === undefined || excludes.indexOf(m.route) === -1) {
+        if (typeof excludes === 'undefined' || excludes.indexOf(m.route) === -1) {
           if (m.scope.match('normal') || m.scope.match(selected.chain_name)) {
             children.push({
               title: m.title,
